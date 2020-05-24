@@ -9,8 +9,8 @@ city_data = { 'Chicago': 'chicago.csv',
               'Washington': 'washington.csv' }
 month_data = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'all': 99 }
 day_data = { 'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6, 'Mon-Fri': 97, 'Sat-Sun': 98, 'all': 99 }
-REVERSE_MONTH = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June' }
-REVERSE_DAY = { 0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday' }
+reverse_month = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June' }
+reverse_day = { 0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday' }
 
 #functions
 
@@ -113,14 +113,14 @@ def time_stats(df, month, day):
     # display the most common month
     print('Most common month:')
     if month == 99:
-        print('   ' + REVERSE_MONTH[df['Month'].mode()[0]])
+        print('   ' + reverse_month[df['Month'].mode()[0]])
     else:
         print('   You selected only a single month.')
 
     # display the most common day of week
     print('Most common day of the week:')
     if day > 96:
-        print('   ' + REVERSE_DAY[df['Weekday'].mode()[0]])
+        print('   ' + reverse_day[df['Weekday'].mode()[0]])
     else:
         print('   You selected only a single day of the week.')
 
