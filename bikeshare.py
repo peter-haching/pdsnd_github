@@ -4,11 +4,11 @@ import numpy as np
 
 # variable definitons
 
-CITY_DATA = { 'Chicago': 'chicago.csv',
+city_data = { 'Chicago': 'chicago.csv',
               'New York City': 'new_york_city.csv',
               'Washington': 'washington.csv' }
-MONTH_DATA = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'all': 99 }
-DAY_DATA = { 'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6, 'Mon-Fri': 97, 'Sat-Sun': 98, 'all': 99 }
+month_data = { 'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'all': 99 }
+day_data = { 'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3, 'Fri': 4, 'Sat': 5, 'Sun': 6, 'Mon-Fri': 97, 'Sat-Sun': 98, 'all': 99 }
 REVERSE_MONTH = { 1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June' }
 REVERSE_DAY = { 0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday' }
 
@@ -48,7 +48,7 @@ def get_filters():
         month_input = input('Please enter the first three letters of the month ("Jan", "Feb" etc. through "Jun") or "all". > ')
         if month_input not in ['Jan','Feb','Mar','Apr','May','Jun','all']:
             print('\nSorry, that is not one of the available choices.')
-    month = MONTH_DATA[month_input]
+    month = month_data[month_input]
 
     # getting user input - day of week
     day_input = ""
@@ -57,7 +57,7 @@ def get_filters():
         day_input = input('Please enter the first three letters of the day (Mon, Tue, etc.), "Mon-Fri", "Sat-Sun", or "all". > ')
         if day_input not in ['Mon','Tue','Wed','Thu','Fri','Sat','Sun','Mon-Fri','Sat-Sun','all']:
             print('\nSorry, that is not one of the available choices.')
-    day = DAY_DATA[day_input]
+    day = day_data[day_input]
 
     print('-'*40)
     return city, month, day
@@ -77,7 +77,7 @@ def load_data(city, month, day):
     """
 
     # creating full dataframe
-    df = pd.read_csv(CITY_DATA[city])
+    df = pd.read_csv(city_data[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month
     df['Weekday'] = df['Start Time'].dt.dayofweek
